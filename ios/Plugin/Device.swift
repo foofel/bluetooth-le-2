@@ -323,7 +323,8 @@ class Device: NSObject, CBPeripheralDelegate {
     }
 
     func getMTU() -> Int {
-        return self.peripheral.maximumWriteValueLength(for: .withResponse)
+        // https://stackoverflow.com/questions/68375433/change-ios-ble-mtu-size-to-512-swift
+        return self.peripheral.maximumWriteValueLength(for: .withoutResponse)
     }
 
     func peripheral(
